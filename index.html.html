@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vivek Kumar Dubey | Portfolio</title>
+
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:title" content="Vivek Kumar Dubey | Portfolio" />
+  <meta property="og:description" content="Performance Marketer with a modern, engaging portfolio." />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Vivek+Kumar+Dubey" />
+  <meta property="og:url" content="https://yourportfolio.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vivek Kumar Dubey | Portfolio" />
+  <meta name="twitter:description" content="Performance Marketer with a modern, engaging portfolio." />
+  <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Vivek+Kumar+Dubey" />
+
+  <style>
+    /* Reset & Base Variables */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Segoe UI', sans-serif; 
+      background-color: #000; 
+      color: #fff; 
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    :root {
+      --matte-green: #2e7d32;
+      --section-bg: #181818;
+    }
+    
+    /* Container for sections that should not take full width */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      width: 100vw;
+      top: 0;
+      z-index: 1000;
+      background: var(--matte-green);
+      padding: 15px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav ul li { margin-left: 25px; }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover { color: #66bb6a; }
+    .social-icons {
+      display: flex;
+      align-items: center;
+    }
+    .social-icons a {
+      margin-left: 10px;
+      font-size: 18px;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover { color: #66bb6a; }
+    
+    /* Hero Section: Full background with left-aligned text */
+    #hero {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      background: url('https://source.unsplash.com/1600x900/?marketing') center center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      margin-top: 80px;
+      text-align: left;
+    }
+    #hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    /* Extra background image behind hero text (16:9) */
+    .hero-bg-extra {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 1200px;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .hero-text {
+      max-width: 600px;
+    }
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .hero-text h2 {
+      font-size: 36px;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+    .hero-text p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .hero-text a {
+      background: var(--matte-green);
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .hero-text a:hover { background: #66bb6a; }
+    
+    /* Section Titles - Highlighted */
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: var(--matte-green);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 3px solid var(--matte-green);
+      padding-bottom: 10px;
+    }
+    
+    /* Content Sections */
+    .content-section {
+      background: var(--section-bg);
+      color: #fff;
+      padding: 80px 40px;
+      margin: 20px auto;
+      max-width: 1200px;
+      border-radius: 8px;
+      transition: all 0.8s ease-out;
+    }
+    
+    /* About Section */
+    #about .about-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+    }
+    .profile-pic {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--matte-green);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .about-text {
+      max-width: 600px;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+    
+    /* Experience Section */
+    #experience .experience-container { width: 100%; }
+    .experience-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .experience-block { margin-bottom: 20px; }
+    .experience-block h3 { margin-bottom: 10px; color: var(--matte-green); font-size: 20px; }
+    .experience-block small { color: #aaa; }
+    ul.experience-list { list-style: none; padding-left: 0; margin-top: 10px; }
+    ul.experience-list li { margin-bottom: 8px; }
+    
+    /* Skills & Proficiency */
+    .skill-box-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .skill-box {
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      color: #fff;
+    }
+    .skill-box:nth-child(1) { background: #ff5722; }
+    .skill-box:nth-child(2) { background: #4caf50; }
+    .skill-box:nth-child(3) { background: #03a9f4; }
+    .skill-box:nth-child(4) { background: #ffeb3b; color: #000; }
+    .skill-box:nth-child(5) { background: #9c27b0; }
+    .skill-box:nth-child(6) { background: #e91e63; }
+    
+    /* Personal Details */
+    .details-box {
+      background: #607d8b;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    
+    /* Projects Section */
+    #projects {
+      background: var(--section-bg);
+      padding: 80px 40px;
+      margin: 20px auto;
+      max-width: 1200px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .project-video {
+      width: 100%;
+      max-width: 800px;
+      height: 40vh;
+      margin: 0 auto 20px;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .project-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .project-video .video-controls {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      gap: 5px;
+    }
+    .project-video .video-controls button {
+      background: var(--matte-green);
+      border: none;
+      padding: 5px 10px;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .project-video .video-controls button:hover {
+      background: #66bb6a;
+    }
+    
+    /* Gallery Section */
+    #gallery .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      border: 2px solid var(--matte-green);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    
+    /* Our Clients Section: Logos in rectangular cards */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+    .client-card {
+      background: var(--section-bg);
+      border: 2px solid var(--matte-green);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    .client-card:hover {
+      transform: scale(1.05);
+    }
+    .client-card img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
+    /* Contact Section */
+    #contact {
+      background: var(--section-bg);
+      padding: 80px 40px;
+      margin: 20px auto;
+      max-width: 1200px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    #contact .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #contact .contact-form input,
+    #contact .contact-form textarea {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    #contact .contact-form button {
+      padding: 15px;
+      border: none;
+      background: var(--matte-green);
+      color: #fff;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #contact .contact-form button:hover { background: #66bb6a; }
+    #contact p { margin-top: 20px; font-size: 16px; text-align: center; }
+    
+    /* Footer */
+    footer {
+      background: var(--matte-green);
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #fff;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .about-wrapper, .experience-columns { flex-direction: column; }
+      .skill-box-container { grid-template-columns: 1fr; }
+      #hero { margin-top: 60px; }
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#our-clients">Our Clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+        <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <img class="hero-bg-extra" src="background.avif" alt="Hero Background Extra">
+    <div class="container hero-content" style="display: flex; align-items: center; justify-content: flex-start;">
+      <div class="hero-text" style="max-width: 600px;">
+        <h1 style="font-weight: bold; margin-bottom:20px;">Vivek Kumar Dubey</h1>
+        <h2 style="font-weight: normal; margin-bottom:20px;">Performance Marketer</h2>
+        <p style="margin-bottom:20px;">Driving exceptional results through data-driven strategies and creative collaboration.</p>
+        <a href="#contact">Let's Connect</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="content-section">
+    <div class="container">
+      <div class="section-title">About Me</div>
+      <div class="about-wrapper">
+        <img src="WhatsApp Image 2025-02-24 at 11.40.08 PM.jpeg" alt="Profile Picture" class="profile-pic" />
+        <div class="about-text">
+          <p>
+            I am a results-driven digital marketing expert specializing in paid media advertising and strategic initiatives.
+            With extensive experience managing campaigns across Meta and Google Ads, I have consistently achieved high Return on Ad Spend (RoAS)
+            and driven brand growth. My approach combines data-driven insights, creative collaboration, and optimized landing pages to convert traffic
+            into loyal customers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="content-section">
+    <div class="container">
+      <div class="section-title">Experience</div>
+      <div class="experience-container">
+        <div class="experience-columns">
+          <div>
+            <h2 style="color: var(--matte-green);">Professional Profile</h2>
+            <p>
+              Dedicated Performance Marketer with a proven track record of managing campaigns for multiple brands,
+              achieving high Return on Ad Spend. Skilled at guiding creative teams, optimizing ad performance, and delivering strategic growth.
+            </p>
+          </div>
+        </div>
+        <hr style="margin:20px 0; border: 1px solid #444;">
+        <div class="experience-block">
+          <h3>Work Experience</h3>
+          <small>February 2024 – Present</small>
+          <p><strong>Performance Marketer &amp; Team Developer</strong> – WE Media (USA-based agency in India)</p>
+          <p>
+            • Manage paid media campaigns for multiple brands using Meta and Google Ads.<br>
+            • Collaborate on growth strategies and creative direction for static, video, and UGC ads.<br>
+            • Optimize landing pages and guide creative teams to enhance ad performance.
+          </p>
+        </div>
+        <div class="experience-block">
+          <small>2019 – 2023</small>
+          <p><strong>Performance Marketer</strong> – Bank of America</p>
+          <p>
+            • Supported various digital marketing initiatives and ensured campaign success through rigorous performance analysis.
+          </p>
+        </div>
+        <div class="experience-block">
+          <h3>Education</h3>
+          <p><strong>Bachelor of Commerce (Graduate)</strong> – Mumbai University</p>
+          <p><strong>10th &amp; 12th</strong> – Maharashtra State Board</p>
+        </div>
+        <div class="experience-block">
+          <h3>Skills &amp; Proficiency</h3>
+          <div class="skill-box-container">
+            <div class="skill-box">Meta Ads Manager</div>
+            <div class="skill-box">Google Ads Manager</div>
+            <div class="skill-box">Performance Analysis</div>
+            <div class="skill-box">Creative Collaboration</div>
+            <div class="skill-box">Growth Strategy</div>
+            <div class="skill-box">Campaign Management</div>
+          </div>
+        </div>
+        <div class="experience-block">
+          <h3>Personal Details</h3>
+          <div class="details-box">
+            <p>
+              <strong>Date of Birth:</strong> 03/08/1996<br>
+              <strong>Marital Status:</strong> Unmarried<br>
+              <strong>Nationality:</strong> Indian<br>
+              <strong>Languages:</strong> English, Hindi, Marathi (basic)
+            </p>
+          </div>
+        </div>
+        <div class="experience-block">
+          <h3>Certifications</h3>
+          <p>Certified in Digital Marketing from IIDE INSTITUTE, Mumbai</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="content-section">
+    <div class="container">
+      <div class="section-title">Projects</div>
+      <div class="project-video">
+        <video id="projVideo1" controls>
+          <source src="Portfolio For Performance Marketing.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-controls">
+          <button onclick="playVideo('projVideo1')">Play</button>
+          <button onclick="stopVideo('projVideo1')">Stop</button>
+        </div>
+      </div>
+      <div class="project-video">
+        <video id="projVideo2" controls>
+          <source src="Excel Reports for all the brands .mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-controls">
+          <button onclick="playVideo('projVideo2')">Play</button>
+          <button onclick="stopVideo('projVideo2')">Stop</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="content-section">
+    <div class="container">
+      <div class="section-title">Gallery</div>
+      <div class="gallery-container">
+        <div class="gallery-item">
+          <img src="gallaery 1.jpg" alt="Digital Ads">
+        </div>
+        <div class="gallery-item">
+          <img src="gallery 3.png" alt="Social Media">
+        </div>
+        <div class="gallery-item">
+          <img src="gallery 4.webp" alt="Marketing Analysis">
+        </div>
+      
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Clients Section: Logos in rectangular cards in a grid -->
+  <section id="our-clients" class="content-section">
+    <div class="section-title">Our Clients</div>
+    <div class="clients-grid">
+      <div class="client-card"><img src="planetbake.png" alt="Planetbake"></div>
+      <div class="client-card"><img src="Hueb.png" alt="Hueb"></div>
+      <div class="client-card"><img src="peepulTree.png" alt="PeepulTree"></div>
+      <div class="client-card"><img src="Ulinen.png" alt="Ulinen"></div>
+      <div class="client-card"><img src="bluebrew.png" alt="Bluebrew"></div>
+      <div class="client-card"><img src="proriders.jpg" alt="Proriders"></div>
+      <div class="client-card"><img src="aquatein.png" alt="Aquatein"></div>
+      <div class="client-card"><img src="mindflix ga.png" alt="Mindflix"></div>
+      <div class="client-card"><img src="webtakt.png" alt="Webtakt"></div>
+      <div class="client-card"><img src="big.png" alt="Webtakt"></div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="content-section">
+    <div class="container">
+      <div class="section-title">Get In Touch</div>
+      <div class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </div>
+      <p style="margin-top:20px; font-size:16px; text-align: center;">
+        <strong>Phone:</strong> +91 97690 45386 | <strong>Email:</strong> vivekkumar9769@gmail.com | 
+        <strong>Address:</strong> 1/10, Amnol Tower, Goregaon (W), Mumbai – 400060
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="text-align:center;">&copy; 2025 Vivek Kumar Dubey. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Video Controls & Animations -->
+  <script>
+    function playVideo(id) {
+      document.getElementById(id).play();
+    }
+    function stopVideo(id) {
+      var vid = document.getElementById(id);
+      vid.pause();
+      vid.currentTime = 0;
+    }
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.classList.add('animate');
+          obs.unobserve(entry);
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+    
+    document.querySelectorAll('header nav ul li a').forEach(link => {
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
